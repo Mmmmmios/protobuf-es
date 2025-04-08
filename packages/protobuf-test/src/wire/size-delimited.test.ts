@@ -69,6 +69,7 @@ describe("sizeDelimitedDecodeStream()", () => {
     ): AsyncIterable<Uint8Array> {
       let offset = 0;
       for (;;) {
+        // oxlint-disable-next-line no-await-in-loop
         await new Promise((resolve) => setTimeout(resolve, delay));
         const end = Math.min(offset + chunkSize, bytes.byteLength);
         yield bytes.slice(offset, end);

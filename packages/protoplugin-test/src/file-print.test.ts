@@ -325,9 +325,7 @@ describe("GeneratedFile.print", () => {
   describe("with tagged template literals", () => {
     test("should print empty lines", async () => {
       const lines = await testGenerate((f) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print` `;
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print``;
       });
       expect(lines).toStrictEqual([" ", ""]);
@@ -335,7 +333,6 @@ describe("GeneratedFile.print", () => {
     test("should print import symbol", async () => {
       const lines = await testGenerate((f) => {
         const imp = createImportSymbol("Foo", "bar");
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print`${imp}`;
       });
       expect(lines).toStrictEqual(['import { Foo } from "bar";', "", "Foo"]);
@@ -343,7 +340,6 @@ describe("GeneratedFile.print", () => {
     test("should print real-world import use case", async () => {
       const lines = await testGenerate((f) => {
         const Foo = createImportSymbol("Foo", "bar");
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print`export function foo(): ${Foo.toTypeOnly()} {
   return new ${Foo}();
 };`;
@@ -358,7 +354,6 @@ describe("GeneratedFile.print", () => {
     });
     test("should print multiple printables", async () => {
       const lines = await testGenerate((f) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print`${"a"}${"b"}${"c"}${1} ${createImportSymbol("Foo", "bar")}`;
       });
       expect(lines).toStrictEqual([
@@ -370,7 +365,6 @@ describe("GeneratedFile.print", () => {
     test("should print nested printables", async () => {
       const lines = await testGenerate((f) => {
         // prettier-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         f.print`${"a"}${["b", ["c", "d", [1, " ", createImportSymbol("Foo", "bar")]]]}`;
       });
       expect(lines).toStrictEqual([

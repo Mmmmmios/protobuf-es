@@ -38,8 +38,6 @@ import * as option_usage_ts from "./gen/ts/extra/option-usage_pb.js";
 import * as json_types_ts_json from "./gen/ts,json_types/extra/json_types_pb.js";
 import * as json_types_js_json from "./gen/js,json_types/extra/json_types_pb.js";
 
-/* eslint-disable @typescript-eslint/no-unused-expressions -- we use expressions for type tests */
-
 test("source retention options are unavailable in generated code", () => {
   const fileOptions = option_usage_ts.file_extra_option_usage.proto.options;
   expect(
@@ -288,7 +286,6 @@ describe("ts generated code is equal to js generated code", () => {
             typeof value.toString == "function" &&
             Object.prototype.hasOwnProperty.call(value, "toString")
           ) {
-            // eslint-disable-next-line @typescript-eslint/no-base-to-string -- we're not calling Object.toString
             id = value.toString() + "@" + seen.size;
           } else {
             id = "unknown@" + seen.size;

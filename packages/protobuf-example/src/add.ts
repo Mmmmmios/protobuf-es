@@ -29,6 +29,7 @@ async function main() {
     active: true,
   });
   for (;;) {
+    // oxlint-disable-next-line no-await-in-loop
     const location = await prompt(
       "Enter a location (or leave blank to finish): ",
     );

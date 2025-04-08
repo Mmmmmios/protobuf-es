@@ -15,8 +15,6 @@
 import { type DescEnum, ScalarType } from "../descriptors.js";
 import { protoInt64 } from "../proto-int64.js";
 
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-
 /**
  * Parse an enum value from the Protobuf text format.
  *

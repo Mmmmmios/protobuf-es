@@ -12,24 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { create, protoInt64 } from "@bufbuild/protobuf";
 import {
+  create,
+  protoInt64,
   type SupportedEdition,
   minimumEdition as minimumEditionUpstream,
   maximumEdition as maximumEditionUpstream,
 } from "@bufbuild/protobuf";
-import type { CodeGeneratorResponse } from "@bufbuild/protobuf/wkt";
 import {
+  type CodeGeneratorResponse,
   CodeGeneratorResponse_Feature,
   CodeGeneratorResponseSchema,
 } from "@bufbuild/protobuf/wkt";
-import { createSchema } from "./schema.js";
-import type { Schema } from "./schema.js";
+import { createSchema, type Schema } from "./schema.js";
 import type { FileInfo } from "./generated-file.js";
 import type { Plugin } from "./plugin.js";
 import { transpile } from "./transpile.js";
-import { parseParameter } from "./parameter.js";
-import type { RawPluginOptions } from "./parameter.js";
+import { parseParameter, type RawPluginOptions } from "./parameter.js";
 
 interface PluginInit<Options extends object> {
   /**

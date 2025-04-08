@@ -21,8 +21,6 @@ import {
 import { protoInt64 } from "../proto-int64.js";
 import { getTextEncoding } from "./text-encoding.js";
 
-/* eslint-disable prefer-const,no-case-declarations,@typescript-eslint/restrict-plus-operands */
-
 /**
  * Protobuf binary format wire types.
  *
@@ -414,11 +412,9 @@ export class BinaryReader {
           // ignore
         }
         break;
-      // eslint-disable-next-line
       // @ts-expect-error TS7029: Fallthrough case in switch
       case WireType.Bit64:
         this.pos += 4;
-      // eslint-disable-next-line no-fallthrough
       case WireType.Bit32:
         this.pos += 4;
         break;

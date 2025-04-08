@@ -18,7 +18,8 @@
       "dependsOn": ["generate"]
     },
     "lint": {
-      "dependsOn": ["format", "^build", "generate"]
+      "dependsOn": ["format", "^build", "generate"],
+      "cache": false
     },
     "attw": {
       "dependsOn": ["build"]

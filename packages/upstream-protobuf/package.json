@@ -14,7 +14,7 @@
     "upstream-warmup": "bin/upstream-warmup.mjs",
     "format": "prettier --write --ignore-unknown '.' '!.tmp'",
     "license-header": "license-header",
-    "lint": "eslint --max-warnings 0 ."
+    "lint": "oxlint --config ../../.oxlintrc.json --report-unused-disable-directives-severity=error"
   },
   "exports": {
     ".": {

@@ -189,7 +189,6 @@ describe("ReflectMessage", () => {
         if (f.message?.typeName != StructSchema.typeName) {
           continue;
         }
-        // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
         switch (f.fieldKind) {
           case "message":
             expect(isReflectMessage(r.get(f), StructSchema)).toBe(true);

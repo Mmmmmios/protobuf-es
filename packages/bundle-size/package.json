@@ -7,7 +7,7 @@
     "postgenerate": "license-header .",
     "format": "prettier --write --ignore-unknown '.' '!src/gen/**' '!.turbo'",
     "license-header": "license-header",
-    "lint": "eslint --max-warnings 0 ."
+    "lint": "oxlint --ignore-pattern 'src/gen/**' --config ../../.oxlintrc.json --report-unused-disable-directives-severity=error"
   },
   "dependencies": {
     "@bufbuild/buf": "^1.51.0",

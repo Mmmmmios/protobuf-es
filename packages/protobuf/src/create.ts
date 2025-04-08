@@ -82,7 +82,6 @@ function initMessage<Desc extends DescMessage>(
     } else {
       field = member;
     }
-    // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check -- no need to convert enum
     switch (field.fieldKind) {
       case "message":
         value = toMessage(field, value);

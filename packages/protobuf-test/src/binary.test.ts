@@ -19,8 +19,6 @@ import {
   getExtension,
   toBinary,
   fromBinary,
-} from "@bufbuild/protobuf";
-import {
   type MessageInitShape,
   type DescMessage,
   protoInt64,

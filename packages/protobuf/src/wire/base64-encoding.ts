@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unnecessary-condition, prefer-const */
-
 /**
  * Decodes a base64 string to a byte array.
  *
@@ -44,7 +42,6 @@ export function base64Decode(base64Str: string) {
         // @ts-expect-error TS7029: Fallthrough case in switch
         case "=":
           groupPos = 0; // reset state when padding found
-        // eslint-disable-next-line no-fallthrough
         case "\n":
         case "\r":
         case "\t":

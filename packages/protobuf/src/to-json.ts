@@ -51,8 +51,6 @@ import { base64Encode } from "./wire/index.js";
 import { createExtensionContainer, getExtension } from "./extensions.js";
 import { checkField, formatVal } from "./reflect/reflect-check.js";
 
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-
 // bootstrap-inject google.protobuf.FeatureSet.FieldPresence.LEGACY_REQUIRED: const $name: FeatureSet_FieldPresence.$localName = $number;
 const LEGACY_REQUIRED: FeatureSet_FieldPresence.LEGACY_REQUIRED = 3;
 
@@ -340,7 +338,7 @@ function scalarToJson(
     // float, double: JSON value will be a number or one of the special string values "NaN", "Infinity", and "-Infinity".
     // Either numbers or strings are accepted. Exponent notation is also accepted.
     case ScalarType.FLOAT:
-    case ScalarType.DOUBLE: // eslint-disable-line no-fallthrough
+    case ScalarType.DOUBLE:
       if (typeof value != "number") {
         throw new Error(
           `cannot encode ${field} to JSON: ${checkField(field, value)?.message}`,
@@ -490,7 +488,6 @@ function durationToJson(val: Duration) {
 function fieldMaskToJson(val: FieldMask) {
   return val.paths
     .map((p) => {
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       if (p.match(/_[0-9]?_/g) || p.match(/[A-Z]/g)) {
         throw new Error(
           `cannot encode message ${val.$typeName} to JSON: lowerCamelCase of path name "` +

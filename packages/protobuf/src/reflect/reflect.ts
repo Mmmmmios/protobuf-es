@@ -130,7 +130,6 @@ class ReflectMessageImpl implements ReflectMessage {
     const value = unsafeGet(this.message, field);
     switch (field.fieldKind) {
       case "list":
-        // eslint-disable-next-line no-case-declarations
         let list = this.lists.get(field);
         if (!list || list[unsafeLocal] !== value) {
           this.lists.set(
@@ -140,7 +139,6 @@ class ReflectMessageImpl implements ReflectMessage {
         }
         return list as ReflectMessageGet<Field>;
       case "map":
-        // eslint-disable-next-line no-case-declarations
         let map = this.maps.get(field);
         if (!map || map[unsafeLocal] !== value) {
           this.maps.set(
@@ -566,7 +564,6 @@ function mapKeyToReflect(
 }
 
 function longToReflect(field: DescField, value: unknown): unknown {
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (field.scalar) {
     case ScalarType.INT64:
     case ScalarType.SFIXED64:
@@ -594,7 +591,6 @@ function longToReflect(field: DescField, value: unknown): unknown {
 }
 
 function longToLocal(field: DescField, value: unknown) {
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (field.scalar) {
     case ScalarType.INT64:
     case ScalarType.SFIXED64:
@@ -657,7 +653,6 @@ function wktValueToReflect(json: JsonValue): Value {
     $typeName: "google.protobuf.Value",
     kind: { case: undefined },
   };
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check -- invalid input is unselected kind
   switch (typeof json) {
     case "number":
       value.kind = { case: "numberValue", value: json };

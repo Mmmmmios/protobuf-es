@@ -33,8 +33,7 @@ import {
   MessageFieldMessage_TestMessageSchema,
 } from "./gen/ts/extra/msg-message_pb.js";
 import { PerfMessageSchema } from "./gen/ts/extra/perf_pb.js";
-
-/* eslint-disable no-console, import/no-named-as-default-member */
+import * as console from "node:console";
 
 main(process.argv.slice(2));
 
@@ -283,7 +282,6 @@ function bench(tests: Test[]): void {
   const suite = new Benchmark.Suite({
     name: "Benchmark",
     onCycle(event: Event) {
-      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       console.log(String(event.target));
     },
     onError(event: Event) {

@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* eslint-disable n/no-missing-import */
-
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join as joinPath } from "node:path";
 import assert from "node:assert";
@@ -59,6 +57,7 @@ async function main(args) {
       continue;
     }
     stdout.write(`Injecting into ${filePath}... `);
+    // oxlint-disable-next-line eslint(no-await-in-loop)
     const newContent = await processFile(
       filePath,
       fileContent,
@@ -125,6 +124,7 @@ async function processFile(filePath, content, descriptorProto, upstream) {
       );
       if (match !== null) {
         const [, minimumEditionString, maximumEditionString, template] = match;
+        // oxlint-disable-next-line eslint(no-await-in-loop)
         const featureSetDefaults = await compileDefaults(
           upstream,
           descriptorProto,

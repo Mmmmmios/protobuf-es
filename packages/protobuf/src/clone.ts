@@ -40,14 +40,12 @@ function cloneReflect(i: ReflectMessage): ReflectMessage {
         break;
       }
       case "list":
-        // eslint-disable-next-line no-case-declarations
         const list = o.get(f);
         for (const item of i.get(f)) {
           list.add(cloneSingular(f, item));
         }
         break;
       case "map":
-        // eslint-disable-next-line no-case-declarations
         const map = o.get(f);
         for (const entry of i.get(f).entries()) {
           map.set(entry[0], cloneSingular(f, entry[1]));

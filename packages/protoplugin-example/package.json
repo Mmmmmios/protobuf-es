@@ -9,7 +9,7 @@
     "generate": "buf generate",
     "format": "prettier --write --ignore-unknown '.' '!.turbo' '!src/gen/**'",
     "license-header": "license-header",
-    "lint": "eslint --max-warnings 0 ."
+    "lint": "oxlint --ignore-pattern 'src/gen/**' --config ../../.oxlintrc.json --report-unused-disable-directives-severity=error"
   },
   "license": "Apache-2.0",
   "dependencies": {

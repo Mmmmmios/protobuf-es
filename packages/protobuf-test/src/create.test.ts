@@ -35,8 +35,6 @@ import {
 } from "./helpers-edition2023.js";
 import { fillProto2Message, fillProto2MessageNames } from "./helpers-proto2.js";
 
-/* eslint-disable @typescript-eslint/ban-ts-comment -- to support older TS versions in the TS compat tests, we cannot use ts-expect-error */
-
 describe("create()", () => {
   describe("with a generated descriptor", () => {
     test("creates a typed message", () => {

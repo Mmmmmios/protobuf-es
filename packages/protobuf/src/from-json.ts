@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* eslint-disable no-case-declarations,@typescript-eslint/restrict-template-expressions */
-
 import {
   type DescEnum,
   type DescExtension,
@@ -426,7 +424,6 @@ function readEnum(
     }
     return nullAsZeroValue ? desc.values[0].number : tokenNull;
   }
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (typeof json) {
     case "number":
       if (Number.isInteger(json)) {
@@ -487,7 +484,6 @@ function scalarFromJson(
   }
   // int64, sfixed64, sint64, fixed64, uint64: Reflect supports string and number.
   // string, bool: Supported by reflect.
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (field.scalar) {
     // float, double: JSON value will be a number or one of the special string values "NaN", "Infinity", and "-Infinity".
     // Either numbers or strings are accepted. Exponent notation is also accepted.
@@ -566,7 +562,6 @@ function mapKeyFromJson(
 ) {
   switch (type) {
     case ScalarType.BOOL:
-      // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
       switch (json) {
         case "true":
           return true;

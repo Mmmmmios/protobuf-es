@@ -68,7 +68,6 @@ export function scalarEquals(
     return true;
   }
   // Special case 64-bit integers - we support number, string and bigint representation.
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (type) {
     case ScalarType.UINT64:
     case ScalarType.FIXED64:

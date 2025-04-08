@@ -228,7 +228,6 @@ export function createFileRegistry(
       protoFileName: string,
     ) => FileDescriptorProto | DescFile | undefined;
     const seen = new Set<string>();
-    // eslint-disable-next-line no-inner-declarations
     function recurseDeps(file: FileDescriptorProto): FileDescriptorProto[] {
       const deps: FileDescriptorProto[] = [];
       for (const protoFileName of file.dependency) {
@@ -298,13 +297,11 @@ function createBaseRegistry(): BaseRegistry {
     },
     addFile(file, skipTypes, withDeps) {
       files.set(file.proto.name, file);
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!skipTypes) {
         for (const type of nestedTypes(file)) {
           this.add(type);
         }
       }
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (withDeps) {
         for (const f of file.dependencies) {
           this.addFile(f, skipTypes, withDeps);
@@ -478,7 +475,6 @@ function addFile(proto: FileDescriptorProto, reg: BaseRegistry): void {
     extensions: [],
     services: [],
     toString(): string {
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions -- we asserted above
       return `file ${proto.name}`;
     },
   };
@@ -892,14 +888,12 @@ function newField(
       case TYPE_GROUP:
         field.listKind = "message";
         field.message = reg.getMessage(trimLeadingDot(proto.typeName));
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         assert(field.message);
         field.delimitedEncoding = isDelimitedEncoding(proto, parentOrFile);
         break;
       case TYPE_ENUM:
         field.listKind = "enum";
         field.enum = reg.getEnum(trimLeadingDot(proto.typeName));
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         assert(field.enum);
         break;
       default:
@@ -918,7 +912,6 @@ function newField(
       field.fieldKind = "message";
       field.message = reg.getMessage(trimLeadingDot(proto.typeName));
       assert(
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         field.message,
         `invalid FieldDescriptorProto: type_name ${proto.typeName} not found`,
       );
@@ -1089,7 +1082,6 @@ function findOneof(
   }
   const oneof = allOneofs[proto.oneofIndex];
   assert(
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     oneof,
     `invalid FieldDescriptorProto: oneof #${proto.oneofIndex} for field #${proto.number} not found`,
   );
@@ -1139,7 +1131,6 @@ function isPackedField(
   if (proto.label != LABEL_REPEATED) {
     return false;
   }
-  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (proto.type) {
     case TYPE_STRING:
     case TYPE_BYTES:
@@ -1271,7 +1262,6 @@ function resolveFeature<Name extends keyof Features>(
  * Assert that condition is truthy or throw error (with message)
  */
 function assert(condition: unknown, msg?: string): asserts condition {
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions -- we want the implicit conversion to boolean
   if (!condition) {
     throw new Error(msg);
   }
